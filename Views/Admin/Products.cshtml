@@ -1,0 +1,51 @@
+﻿@model MinerShop.Models.ViewsModels.ProductAdminViewModel
+
+@{
+    ViewBag.Title = "Товары";
+}
+
+<h2>Товары</h2>
+<a asp-action="AddProduct">Добавить товар</a>
+
+<form>
+    <div class="form-inline form-group">
+        <label class="col-form-label">Категория</label>
+        <select name="category" asp-items="@Model.CategorieSelectList" class="form-control"></select>
+        
+        <input type="submit" value="Фильтр" class="btn btn-light"/>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Название</td>
+        <td>Цена</td>
+        <td>Колличество</td>
+        <td>Изображение</td>
+        <td>Категория</td>
+        <td>Действие</td>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var product in Model.Products)
+    {
+        <tr>
+            <td>@product.Id</td>
+            <td>@product.Name</td>
+            <td>@product.Price</td>
+            <td>@product.Number</td>
+            <td>
+                <img class="admin-products-img" src="@product.Img"/>
+            </td>
+            <td>@product.Category.Name</td>
+            <td class="btn-group-vertical">
+                <a class="btn btn-primary" asp-action="EditProduct" asp-controller="Admin" asp-route-productId="@product.Id">Изменить</a>
+                <a class="btn btn-danger mt-2" asp-action="DeliteProduct" asp-controller="Admin" asp-route-productId="@product.Id">Удалить</a>
+                <a class="btn btn-success mt-2" asp-action="DetailProduct" asp-controller="Admin" asp-route-productId="@product.Id">Подробнее</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

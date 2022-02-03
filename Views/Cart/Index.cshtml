@@ -1,0 +1,13 @@
+﻿@model MinerShop.Models.ViewsModels.ShopCartViewModel
+
+<div class="container">
+    @foreach (var item in Model.ShopCart.ListShopItems)
+    {
+        <div class="alert alert-warning mt-3">
+            <b>Товар:</b> @item.Product.Name <br/>
+            <b>Цена:</b> @item.Product.Price.ToString("C")
+        </div>
+    }
+    <hr/>
+    <a class="btn btn-danger mb-5" asp-controller="Order" asp-action="Checkout">Оплатить</a>
+</div>

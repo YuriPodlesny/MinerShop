@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MinerShop-Admin</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header class="site-header mb-3">
+        <nav class="sticky-top py-1">
+            <div class="container d-flex flex-column flex-md-row justify-content-between">
+                <a class="color-nav navbar-brand" asp-controller="Admin" asp-action="Index">MinerShop-Admin</a>
+
+                <a class="color-nav py-2 d-none d-md-inline-block" asp-action="Products" asp-controller="Admin">Товары</a>
+                <a class="color-nav py-2 d-none d-md-inline-block" asp-action="Categories" asp-controller="Admin">Категории</a>
+                <a class="color-nav py-2 d-none d-md-inline-block" asp-action="Orders" asp-controller="Admin">Заказы</a>
+                <a class="color-nav py-2 d-none d-md-inline-block" asp-action="Logout" asp-controller="Account">Выйти</a>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

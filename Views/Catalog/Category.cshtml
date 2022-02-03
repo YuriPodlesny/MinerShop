@@ -1,0 +1,27 @@
+﻿@model MinerShop.Models.ViewsModels.CategoryViewModel
+
+@{
+    ViewBag.Title = Model.Category.Name;
+}
+
+<h2>@Model.Category.Name</h2>
+<div class="row mt-5 mb-2">
+    @foreach (var product in Model.Products)
+    {
+        <div class="col-lg-4">
+            <div class="card" style="width: 18rem;">
+                <img src="@product.Img" class="card-img-top" alt="@product.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="text-info">Цена @product.Price</p>
+                    <a asp-controller="Catalog" asp-action="Product" asp-route-productId="@product.Id" class="btn btn-primary">Купить</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div class="row">
+    <p>
+        @Model.Category.Description;
+    </p>
+</div>

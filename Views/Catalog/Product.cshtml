@@ -1,0 +1,31 @@
+﻿@model Product
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<h2>@Model.Name</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <img src="@Model.Img" class="img-fluid" alt="@Model.Name">
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col-6">
+                    <p class="text-primary">Колличество: @Model.Number</p>
+                </div>
+                <div class="col-6">
+                    <p class="text-info">Цена: @Model.Price рублей</p> 
+                </div>
+            </div>
+            <div class="col-12">
+                <p>@Model.Description</p>
+            </div>
+            <div>
+                <a class="btn btn-success" asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@Model.Id">Добавить в корзину</a>
+            </div>
+        </div>
+    </div>
+</div>
