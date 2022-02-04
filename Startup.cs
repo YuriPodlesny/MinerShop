@@ -45,7 +45,7 @@ namespace MinerShop
             services.AddScoped(sp => ShopCart.GetCart(sp));
             services.AddMemoryCache();
             services.AddSession();
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,6 +76,9 @@ namespace MinerShop
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Shop}/{action=Home}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Admin}/{action=Index}/{id?}");
             });
         }
     }

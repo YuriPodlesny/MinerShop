@@ -11,6 +11,7 @@ using MinerShop.Models.ViewsModels;
 
 namespace MinerShop.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly IProductServices _productServices;
@@ -22,14 +23,12 @@ namespace MinerShop.Controllers
             _allOrders = allOrders;
         }
 
-        [Authorize]
         [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
-        [Authorize]
         [HttpGet]
         public ActionResult Products(int category)
         {
@@ -37,21 +36,18 @@ namespace MinerShop.Controllers
             return View(productViewModel);
         }
 
-        [Authorize]
         [HttpGet]
         public IActionResult Categories()
         {
             return View(_productServices.GetAllCategories());
         }
 
-        [Authorize]
         [HttpGet]
         public IActionResult Orders()
         {
             return View(_productServices.GetAllOrders());
         }
 
-        [Authorize]
         [HttpGet]
         public IActionResult AddProduct()
         {
@@ -59,7 +55,6 @@ namespace MinerShop.Controllers
             return View();
         }
 
-        [Authorize]
         [HttpPost]
         public IActionResult AddProduct(Product newProduct)
         {
@@ -78,14 +73,12 @@ namespace MinerShop.Controllers
             return View(newProduct);
         }
 
-        [Authorize]
         [HttpGet]
         public IActionResult AddCategory()
         {
             return View();
         }
 
-        [Authorize]
         [HttpPost]
         public IActionResult AddCategory(Category newCategory)
         {
@@ -103,7 +96,6 @@ namespace MinerShop.Controllers
             return View(newCategory);
         }
 
-        [Authorize]
         [HttpGet]
         [ActionName("DeliteProduct")]
         public IActionResult ConfirmDeliteProduct(int productId)
@@ -112,7 +104,6 @@ namespace MinerShop.Controllers
             return View(product);
         }
 
-        [Authorize]
         [HttpPost]
         public IActionResult DeliteProduct(int productId)
         {
@@ -120,7 +111,6 @@ namespace MinerShop.Controllers
             return RedirectToAction(nameof(Products));
         }
 
-        [Authorize]
         [HttpGet]
         public IActionResult EditProduct(int productId)
         {
@@ -128,7 +118,6 @@ namespace MinerShop.Controllers
             return View(product);
         }
 
-        [Authorize]
         [HttpPost]
         public IActionResult EditProduct(Product editProduct)
         {
@@ -147,7 +136,6 @@ namespace MinerShop.Controllers
             return View(editProduct);
         }
 
-        [Authorize]
         [HttpGet]
         public IActionResult EditCategory(int categoryId)
         {
@@ -155,7 +143,6 @@ namespace MinerShop.Controllers
             return View(category);
         }
 
-        [Authorize]
         [HttpPost]
         public IActionResult EditCategory(Category editCategory)
         {
@@ -174,7 +161,6 @@ namespace MinerShop.Controllers
             return View(editCategory);
         }
 
-        [Authorize]
         [HttpGet]
         public IActionResult DetailProduct(int productId)
         {
@@ -182,7 +168,6 @@ namespace MinerShop.Controllers
             return View(product);
         }
 
-        [Authorize]
         [HttpGet]
         public IActionResult DetailCategory(int categoryId)
         {
